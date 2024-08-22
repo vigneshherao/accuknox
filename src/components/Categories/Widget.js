@@ -1,6 +1,7 @@
 import React from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import { Bar } from "react-chartjs-2";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +12,8 @@ import {
   Legend,
 } from "chart.js";
 import NoWidget from "./NoWidget";
+import { useDispatch, useSelector } from "react-redux";
+import { addFilteredData } from "../../utils/dataSlice";
 
 ChartJS.register(
   CategoryScale,
@@ -23,8 +26,10 @@ ChartJS.register(
 
 const Widget = ({ widgetData }) => {
   const { name, type, data } = widgetData;
+  const datas = useSelector((store) => store?.jsonData?.data);
+  const dispatch = useDispatch();
 
-  if (!data) {
+  if (!data || !datas) {
     return <NoWidget widgetName={name} />;
   }
 
@@ -52,9 +57,28 @@ const Widget = ({ widgetData }) => {
     },
   };
 
+  const handlRemove = (name) => {
+    if (!datas || !datas.categories) {
+      console.error("Data is undefined or not properly structured");
+      return;
+    }
+
+    const filteredCategories = datas.categories.map((category) => ({
+      ...category,
+      widgets: category.widgets.filter((widget) => widget.name !== name),
+    }));
+
+    dispatch(addFilteredData(filteredCategories));
+  };
+
   return (
     <div className="w-full mt-5 sm:w-[32%] h-60 bg-white mx-2 rounded-lg p-4">
-      <h3 className="font-bold mb-2">{name}</h3>
+      <div className="flex justify-between">
+        <h3 className="font-bold mb-2">{name}</h3>
+        <button onClick={() => handlRemove(name)}>
+          <IoIosRemoveCircleOutline />
+        </button>
+      </div>
       <div className="flex items-center h-full">
         {type === "pieChart" && (
           <div className="w-7/12 flex justify-center">
