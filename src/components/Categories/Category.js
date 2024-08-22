@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Widget from "./Widget";
 import { jsonData } from "../../utils/constants";
+import AddWidget from "./AddWidget";
 
 const Category = () => {
   const [data, setData] = useState(jsonData);
@@ -16,6 +17,7 @@ const Category = () => {
               {data.widgets.map((widgetData, idx) => (
                 <Widget key={idx} widgetData={widgetData} />
               ))}
+              <AddWidget />
             </div>
           </div>
         );
