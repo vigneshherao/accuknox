@@ -1,13 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { openWidget } from "../../utils/widgetSlice";
 
 const DashBoardHeader = () => {
+  const dispatch = useDispatch();
+
+  const handleWidget = () => {
+    dispatch(openWidget());
+  };
+
   return (
     <div className="flex justify-between items-center px-10 mt-8">
       <div>
         <h2 className="font-semibold">CNAAP DashBoard</h2>
       </div>
       <div className="hidden md:block">
-        <button className="bg-white border p-1 mr-2 text-gray-500 hover:border-2 hover:border-blue-800  hover:text-blue-800 font-semibold">
+        <button
+          onClick={handleWidget}
+          className="bg-white border p-1 mr-2 text-gray-500 hover:border-2 hover:border-blue-800  hover:text-blue-800 font-semibold"
+        >
           Add Widget
         </button>
         <button className="bg-white border p-1 mr-2 text-gray-500 hover:border-2 hover:border-blue-800  hover:text-blue-800 font-semibold">

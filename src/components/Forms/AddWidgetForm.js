@@ -1,11 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { closeWidget } from "../../utils/widgetSlice";
 
 const AddWidgetForm = () => {
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(closeWidget());
+  };
+
   return (
     <div className="bg-white h-screen w-4/12 rounded-lg shadow-lg flex flex-col">
       <div className="bg-blue-900 w-full h-12 px-4 flex justify-between items-center rounded-t-lg">
         <h3 className="text-white font-semibold">Add Widget</h3>
-        <p className="text-white cursor-pointer">Close</p>
+        <p className="text-white cursor-pointer" onClick={handleClose}>
+          Close
+        </p>
       </div>
       <div className="p-6 flex-grow">
         <p className="text-gray-700 mb-4">
