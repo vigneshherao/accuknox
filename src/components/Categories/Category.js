@@ -6,7 +6,6 @@ import AddWidgetForm from "../Forms/AddWidgetForm";
 
 const Category = () => {
   const [data, setData] = useState(jsonData);
-  console.log(data);
 
   return (
     <div className="px-4 sm:px-10 mt-10 pb-10">
