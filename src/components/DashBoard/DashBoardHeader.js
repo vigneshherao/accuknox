@@ -14,6 +14,14 @@ const DashBoardHeader = () => {
       <div>
         <h2 className="font-semibold">CNAAP DashBoard</h2>
       </div>
+      <div className="md:hidden">
+        <button
+          onClick={handleWidget}
+          className="bg-white border p-1 mr-2 text-gray-500 hover:border-2 hover:border-blue-800  hover:text-blue-800 font-semibold"
+        >
+          Add Widget
+        </button>
+      </div>
       <div className="hidden md:block">
         <button
           onClick={handleWidget}

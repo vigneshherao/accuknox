@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeWidget } from "../../utils/widgetSlice";
 import { IoCloseOutline } from "react-icons/io5";
 import { addData } from "../../utils/dataSlice";
+import { toast } from "react-toastify";
 
 const AddWidgetForm = () => {
   const categoires = [
@@ -56,20 +57,25 @@ const AddWidgetForm = () => {
     }
 
     handleClose();
+
+    toast.success("Widget added successfully!");
   };
 
   return (
-    <div className="fixed top-0 right-0 z-10 h-full w-5/12 bg-white shadow-lg">
+    <div className="fixed top-0 right-0 z-10 h-full  w-12/12 lg:w-5/12 bg-white shadow-lg">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="bg-white h-screen w-full rounded-lg shadow-lg flex flex-col">
           <div className="bg-blue-900 w-full h-12">
-            <div className="flex justify-between items-center px-4 ">
+            <div className="flex justify-between items-center px-4 mt-2 mb-2">
               <h3 className="text-white font-semibold">Add Widget</h3>
               <p className="text-white cursor-pointer" onClick={handleClose}>
                 <IoCloseOutline style={{ width: "40px", height: "30px" }} />
               </p>
             </div>
-            <div className="flex justify-start space-x-4 mt-5">
+            <p className="text-gray-700 mb-1 text-start px-2">
+              Personalize the dashboard by adding your Widget
+            </p>
+            <div className="flex justify-start space-x-4 px-2  bg-slate-200">
               {categoires.map((category, index) => (
                 <button
                   key={index}
@@ -85,7 +91,7 @@ const AddWidgetForm = () => {
               ))}
             </div>
           </div>
-          <div className="p-6 flex-grow mt-12">
+          <div className="p-6 flex-grow mt-16">
             <div className="w-full mb-4">
               <input
                 ref={nameRef}
@@ -100,7 +106,7 @@ const AddWidgetForm = () => {
                 ref={textRef1}
                 className="w-full p-2 border border-gray-300 rounded-md"
                 type="text"
-                placeholder="Widget Text"
+                placeholder="Widget label1"
               />
             </div>
             <div className="w-full">
@@ -108,7 +114,7 @@ const AddWidgetForm = () => {
                 ref={textRef2}
                 className="w-full p-2 border border-gray-300 rounded-md"
                 type="text"
-                placeholder="Widget Text"
+                placeholder="Widget label2"
               />
             </div>
           </div>
