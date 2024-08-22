@@ -3,9 +3,10 @@ import Widget from "./Widget";
 import { jsonData } from "../../utils/constants";
 import AddWidget from "./AddWidget";
 import AddWidgetForm from "../Forms/AddWidgetForm";
+import { useSelector } from "react-redux";
 
 const Category = () => {
-  const [data, setData] = useState(jsonData);
+  const data = useSelector((store) => store?.jsonData?.data);
 
   return (
     <div className="px-4 sm:px-10 mt-10 pb-10">

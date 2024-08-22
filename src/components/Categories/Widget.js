@@ -66,7 +66,6 @@ const Widget = ({ widgetData }) => {
               }))}
               lineWidth={20}
               radius={30}
-              label={({ dataEntry }) => `${dataEntry.value} Total`}
               labelStyle={{
                 fontSize: "5px",
                 fill: "#000",
