@@ -8,7 +8,17 @@ const dataSlice = createSlice({
   },
   reducers: {
     addData: (state, action) => {
-      state.data = action.payload;
+      const { categoryName, widget } = action.payload;
+
+      const category = state.data.categories.find(
+        (cat) => cat.name === categoryName
+      );
+
+      if (category) {
+        category.widgets.push(widget);
+      } else {
+        console.error(`Category "${categoryName}" not found.`);
+      }
     },
   },
 });
