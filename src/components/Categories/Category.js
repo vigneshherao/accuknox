@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Widget from "./Widget";
 import { jsonData } from "../../utils/constants";
 import AddWidget from "./AddWidget";
+import AddWidgetForm from "../Forms/AddWidgetForm";
 
 const Category = () => {
   const [data, setData] = useState(jsonData);
