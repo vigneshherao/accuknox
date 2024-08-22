@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { closeWidget } from "../../utils/widgetSlice";
-import { addData } from "../../utils/dataSlice";
+import { IoCloseOutline } from "react-icons/io5";
 
 const AddWidgetForm = () => {
   const name = useRef(null);
@@ -27,14 +27,14 @@ const AddWidgetForm = () => {
         <div className="bg-blue-900 w-full h-12 px-4 flex justify-between items-center">
           <h3 className="text-white font-semibold">Add Widget</h3>
           <p className="text-white cursor-pointer" onClick={handleClose}>
-            Close
+            <IoCloseOutline style={{ width: "40px", height: "30px" }} />
           </p>
         </div>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="p-6 flex-grow">
-            <p className="text-gray-700 mb-4">
-              Personalize the dashboard by adding your Widget
-            </p>
+        <div className="p-6 flex-grow">
+          <p className="text-gray-700 mb-4">
+            Personalize the dashboard by adding your Widget
+          </p>
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="w-full">
               <input
                 ref={name}
@@ -52,19 +52,19 @@ const AddWidgetForm = () => {
                 placeholder="Widget Text"
               />
             </div>
-          </div>
-          <div className="p-4 bg-gray-100 flex justify-end space-x-2 rounded-b-lg">
-            <button
-              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-              onClick={handleClose}
-            >
-              Cancel
-            </button>
-            <button className="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800">
-              Confirm
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div className="p-4 bg-gray-100 flex justify-end space-x-2 rounded-b-lg">
+          <button
+            className="bg-white border-2 border-blue-950 text-blue-950 px-4 py-2 rounded-md hover:bg-slate-200"
+            onClick={handleClose}
+          >
+            Cancel
+          </button>
+          <button className="bg-blue-950 text-white px-4 py-2 rounded-md hover:bg-blue-800">
+            Confirm
+          </button>
+        </div>
       </div>
     </div>
   );
