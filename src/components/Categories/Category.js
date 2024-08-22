@@ -4,13 +4,17 @@ import { jsonData } from "../../utils/constants";
 import AddWidget from "./AddWidget";
 import AddWidgetForm from "../Forms/AddWidgetForm";
 import { useSelector } from "react-redux";
+import NoCategory from "./NoCategory";
 
 const Category = () => {
-  const data = useSelector((store) => store?.jsonData?.data);
+  const data = useSelector((store) => store?.jsonData?.filterData);
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return <NoCategory />;
+  }
 
   return (
     <div className="px-4 sm:px-10 mt-10 pb-10">
-      {data.categories.map((data) => {
+      {data.map((data) => {
         return (
           <div className="mt-2" key={data.name}>
             <h3 className="font-bold">{data.name}</h3>

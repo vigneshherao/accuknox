@@ -5,6 +5,7 @@ const dataSlice = createSlice({
   name: "Data",
   initialState: {
     data: jsonData,
+    filterData: jsonData,
   },
   reducers: {
     addData: (state, action) => {
@@ -20,8 +21,11 @@ const dataSlice = createSlice({
         console.error(`Category "${categoryName}" not found.`);
       }
     },
+    addFilteredData: (state, action) => {
+      state.filterData = action.payload;
+    },
   },
 });
 
-export const { addData } = dataSlice.actions;
+export const { addData, addFilteredData } = dataSlice.actions;
 export default dataSlice.reducer;
