@@ -23,7 +23,7 @@ const Header = () => {
   }, [inputData, data.categories, dispatch]);
 
   return (
-    <header className="flex justify-between items-center bg-white px-10 h-12">
+    <header className="px-4 flex sm:flex justify-between items-center bg-white md:px-10 h-12">
       <div className="cursor-pointer">
         <h3 className="font-semibold text-gray-400">
           Home &#x2192;

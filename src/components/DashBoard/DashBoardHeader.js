@@ -10,7 +10,7 @@ const DashBoardHeader = () => {
   };
 
   return (
-    <div className="flex justify-between items-center px-10 mt-8">
+    <div className=" px-4  flex sm:flex justify-between items-center sm:px-10 mt-8">
       <div>
         <h2 className="font-semibold">CNAAP DashBoard</h2>
       </div>
