@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
+import React, { useState } from "react";
 import { CiUser } from "react-icons/ci";
 import { CiBellOn } from "react-icons/ci";
-import { useDispatch, useSelector } from "react-redux";
-import { addFilteredData } from "../../utils/dataSlice";
+import { DASHBOARD, HOME } from "../../utils/constantsVariables";
+import useFilter from "../../hooks/useFilter";
 
 const Header = () => {
   const [inputData, setinputData] = useState("");
-  const dispatch = useDispatch();
 
-  const data = useSelector((store) => store?.jsonData?.data);
-
-  useEffect(() => {
-    const filterData = data.categories.filter(
-      (category) =>
-        category?.name?.toLowerCase().includes(inputData.toLowerCase()) ||
-        category.widgets.some((widget) =>
-          widget?.name?.toLowerCase().includes(inputData.toLowerCase())
-        )
-    );
-    dispatch(addFilteredData(filterData));
-  }, [inputData, data.categories, dispatch]);
+  useFilter(inputData);
 
   return (
     <header className="px-4 flex sm:flex justify-between items-center bg-white md:px-10 h-12">
       <div className="cursor-pointer">
         <h3 className="font-semibold text-gray-400">
-          Home &#x2192;
-          <span className="font-bold text-blue-900"> DashBoard V2</span>
+          {HOME} &#x2192;
+          <span className="font-bold text-blue-900">{DASHBOARD}</span>
         </h3>
       </div>
       <div className="flex items-center">

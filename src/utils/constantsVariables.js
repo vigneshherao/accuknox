@@ -12,3 +12,5 @@ export const LAST = "Last 2 Days";
 export const PARA = " Personalize the dashboard by adding your Widget";
 export const CANCEL = "Cancel";
 export const CONFIRM = "CONFIRM";
+export const HOME = " Home";
+export const DASHBOARD = "DashBoard V2";
