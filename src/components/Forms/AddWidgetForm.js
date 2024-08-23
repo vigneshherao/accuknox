@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { closeWidget } from "../../utils/widgetSlice";
 import { IoCloseOutline } from "react-icons/io5";
-import { addData } from "../../utils/dataSlice";
-import { toast } from "react-toastify";
+import useAddWidget from "../../hooks/useAddWidget";
+import { ADD, CANCEL, CONFIRM, PARA } from "../../utils/constantsVariables";
 
 const AddWidgetForm = () => {
   const categories = [
@@ -14,51 +12,15 @@ const AddWidgetForm = () => {
   const nameRef = useRef(null);
   const textRef1 = useRef(null);
   const textRef2 = useRef(null);
-  const dispatch = useDispatch();
+
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const handleClose = () => {
-    dispatch(closeWidget());
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const widgetName = nameRef.current.value;
-    const widgetText1 = textRef1.current.value;
-    const widgetText2 = textRef2.current.value;
-    dispatch(
-      addData({
-        categoryName: activeCategory,
-        widget: {
-          name: widgetName,
-          type: "pieChart",
-          data:
-            widgetText1 && widgetText2
-              ? {
-                  labels: [widgetText1, widgetText2],
-                  values: [
-                    Math.floor(Math.random() * 90) + 10,
-                    Math.floor(Math.random() * 90) + 10,
-                  ],
-                  colors: [getRandomColor(), getRandomColor()],
-                }
-              : null,
-        },
-      })
-    );
-
-    function getRandomColor() {
-      const letters = "0123456789ABCDEF";
-      let color = "#";
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
-
-    handleClose();
-    toast.success("Widget added successfully!");
-  };
+  const [handleSubmit, handleClose] = useAddWidget(
+    nameRef,
+    textRef1,
+    textRef2,
+    activeCategory
+  );
 
   return (
     <div className="fixed top-0 right-0 z-10 h-full w-full sm:w-5/12 bg-white shadow-lg">
@@ -67,14 +29,14 @@ const AddWidgetForm = () => {
           <div className="bg-blue-900 w-full h-12">
             <div className="flex justify-between items-center px-4 mt-2 mb-2">
               <h3 className="text-white text-sm sm:text-base font-semibold">
-                Add Widget
+                {ADD}
               </h3>
               <p className="text-white cursor-pointer" onClick={handleClose}>
                 <IoCloseOutline style={{ width: "30px", height: "24px" }} />
               </p>
             </div>
             <p className="mt-5 text-gray-700 mb-1 text-start px-2 text-xs sm:text-sm">
-              Personalize the dashboard by adding your Widget
+              {PARA}
             </p>
             <div className="flex justify-start space-x-2 sm:space-x-4 px-2 bg-slate-200">
               {categories.map((category, index) => (
@@ -125,13 +87,13 @@ const AddWidgetForm = () => {
               className="bg-white border-2 border-blue-950 text-blue-950 px-4 py-2 text-xs sm:text-sm rounded-md hover:bg-slate-200"
               onClick={handleClose}
             >
-              Cancel
+              {CANCEL}
             </button>
             <button
               type="submit"
               className="bg-blue-950 text-white px-4 py-2 text-xs sm:text-sm rounded-md hover:bg-blue-800"
             >
-              Confirm
+              {CONFIRM}
             </button>
           </div>
         </div>

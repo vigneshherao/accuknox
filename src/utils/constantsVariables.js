@@ -9,3 +9,6 @@ export const ADD = "Add Widget";
 export const REFRESH = "Refresh";
 export const Options = "Options";
 export const LAST = "Last 2 Days";
+export const PARA = " Personalize the dashboard by adding your Widget";
+export const CANCEL = "Cancel";
+export const CONFIRM = "CONFIRM";
