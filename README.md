@@ -2,7 +2,7 @@ ACCUKNOX REACT TASK - USING REACT JS, REDUX, TAILWIND CSS
 
 
 
-features : DashBoard, Add Widget, Remove Widget, 
+features : DashBoard, Add Widget, Remove Widget, Search Widget Based on Categories
 
 Library: PieChart for graphs,Redux For State Management
 
