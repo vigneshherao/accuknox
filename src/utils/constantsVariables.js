@@ -1,0 +1,6 @@
+export const ADD_WIDGET = "➕ Add Widget";
+export const IMG =
+  "https://static.vecteezy.com/system/resources/previews/006/732/096/non_2x/bar-chart-logo-icon-sign-symbol-design-free-vector.jpg";
+export const NO_DATA = " No Data Available";
+export const TRY = " Try searching with matching categorie or widget";
+export const NO_GRAPH = "No Graph data available";

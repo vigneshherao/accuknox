@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Widget from "./Widget";
-import { jsonData } from "../../utils/constants";
 import AddWidget from "./AddWidget";
-import AddWidgetForm from "../Forms/AddWidgetForm";
 import { useSelector } from "react-redux";
 import NoCategory from "./NoCategory";
 

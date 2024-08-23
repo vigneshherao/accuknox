@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { openWidget } from "../../utils/widgetSlice";
+import { ADD_WIDGET } from "../../utils/constantsVariables";
 
 const AddWidget = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const AddWidget = () => {
           className="p-1 px-2 bg-gray-100 border-2 rounded-sm text-gray-600 hover:text-gray-900 hover:font-semibold"
           onClick={handleWidget}
         >
-          ➕ Add Widget
+          {ADD_WIDGET}
         </button>
       </div>
     </div>

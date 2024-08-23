@@ -58,11 +58,6 @@ const Widget = ({ widgetData }) => {
   };
 
   const handlRemove = (name) => {
-    if (!datas || !datas.categories) {
-      console.error("Data is undefined or not properly structured");
-      return;
-    }
-
     const filteredCategories = datas.categories.map((category) => ({
       ...category,
       widgets: category.widgets.filter((widget) => widget.name !== name),
