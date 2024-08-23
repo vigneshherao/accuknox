@@ -1,24 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addFilteredData } from "../../utils/dataSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useFilter from "../../hooks/useFilter";
 
 const SearchBar = () => {
   const [inputData, setinputData] = useState("");
-  const dispatch = useDispatch();
 
-  const data = useSelector((store) => store?.jsonData?.data);
+  useFilter(inputData);
 
-  useEffect(() => {
-    const filterData = data.categories.filter(
-      (category) =>
-        category?.name?.toLowerCase().includes(inputData.toLowerCase()) ||
-        category.widgets.some((widget) =>
-          widget?.name?.toLowerCase().includes(inputData.toLowerCase())
-        )
-    );
-    dispatch(addFilteredData(filterData));
-  }, [inputData, data.categories, dispatch]);
   return (
     <div className=" md:hidden h-full w-full flex justify-center mt-10">
       <input
